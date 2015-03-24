@@ -6,11 +6,11 @@ module Icons
 
   def exercise_status_icon(exercise)
     link_to exercise_status_fa_icon(exercise),
-            exercise_submissions_path(exercise) if current_user?
+            "#{current_user?? exercise_submissions_path(exercise) : ''}", class: "has-tooltip", title: "#{t(exercise.status_for(current_user))}"
   end
 
   def language_icon(language, options={})
-    options = {alt: language.name, height: 16, class: 'special-icon'}.merge(options)
+    options = {title: language, alt: language.name, height: 16, class: 'special-icon has-tooltip'}.merge(options)
     link_to image_tag(language.image_url, options), exercises_path(q: language.name)
   end
 
