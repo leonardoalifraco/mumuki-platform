@@ -51,7 +51,7 @@ class ExercisesController < ApplicationController
 
 
   def set_exercise
-    @exercise = Exercise.find(params[:id])
+    @exercise = Exercise.find!(params[:id]).ensure_locale
   end
 
   def exercise_params

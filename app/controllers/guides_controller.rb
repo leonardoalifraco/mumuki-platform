@@ -37,7 +37,7 @@ class GuidesController < ApplicationController
   private
 
   def set_guide
-    @guide = Guide.find(params[:id])
+    @guide = Guide.find!(params[:id]).ensure_locale
   end
 
   def guide_params
