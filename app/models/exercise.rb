@@ -13,7 +13,6 @@ class Exercise < ActiveRecord::Base
   include WithMarkup
   include WithAuthor
   include WithSubmissions
-  include WithLocale
 
   belongs_to :language
   belongs_to :guide
