@@ -59,7 +59,7 @@ feature 'Search Flow' do
 
     visit "/guides/#{guide.id}"
 
-    #FIXME expect(page).to have_text('Continue')
+    expect(page).to have_text('Continue Practicing!')
   end
 
 
