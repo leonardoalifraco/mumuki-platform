@@ -80,6 +80,18 @@ ActiveRecord::Schema.define(version: 20150620181839) do
 
   add_index "contributors", ["guide_id", "user_id"], name: "index_contributors_on_guide_id_and_user_id", unique: true, using: :btree
 
+  create_table "exercise_progresses", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "exercise_id"
+    t.integer  "last_submission_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "exercise_progresses", ["exercise_id"], name: "index_exercise_progresses_on_exercise_id", using: :btree
+  add_index "exercise_progresses", ["last_submission_id"], name: "index_exercise_progresses_on_last_submission_id", using: :btree
+  add_index "exercise_progresses", ["user_id"], name: "index_exercise_progresses_on_user_id", using: :btree
+
   create_table "exercises", force: true do |t|
     t.string   "title"
     t.text     "description"
