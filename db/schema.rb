@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150722003532) do
+ActiveRecord::Schema.define(version: 20150721162612) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 20150722003532) do
     t.text     "corollary"
     t.integer  "layout",            default: 0,    null: false
     t.text     "expectations"
+    t.integer  "max_points",        default: 10
   end
 
   add_index "exercises", ["author_id"], name: "index_exercises_on_author_id", using: :btree
