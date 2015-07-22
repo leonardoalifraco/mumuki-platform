@@ -19,7 +19,6 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :exercises, only: :index
-    resources :submissions, only: :index
     resources :users, only: :index
   end
 
@@ -30,7 +29,7 @@ Rails.application.routes.draw do
   # All users
   resources :exercises do
     # Current user
-    resources :submissions, controller: 'exercise_submissions', only: :create
+    resources :solutions, controller: 'exercise_solutions', only: :create
   end
 
   # All users
@@ -40,7 +39,7 @@ Rails.application.routes.draw do
     member do
       post :collaborators_refresh
       get :details
-      get :submissions_dump
+      get :solutions_dump
     end
     # All users
     resources :imports, controller: 'guide_imports', only: [:create, :index]
@@ -57,8 +56,5 @@ Rails.application.routes.draw do
     resources :guides, controller: 'user_guides', only: :index
     #nested user
     resources :solved_exercises, controller: 'user_solved_exercises', only: :index
-
-    # Current user
-    resources :submissions, only: :index
   end
 end

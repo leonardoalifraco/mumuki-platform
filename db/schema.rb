@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150722003532) do
+ActiveRecord::Schema.define(version: 20150722142019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -178,6 +178,23 @@ ActiveRecord::Schema.define(version: 20150722003532) do
 
   add_index "paths", ["category_id"], name: "index_paths_on_category_id", using: :btree
   add_index "paths", ["language_id"], name: "index_paths_on_language_id", using: :btree
+
+  create_table "solutions", force: true do |t|
+    t.text     "content"
+    t.integer  "exercise_id"
+    t.integer  "status",              default: 0
+    t.text     "result"
+    t.integer  "submitter_id"
+    t.text     "expectation_results"
+    t.text     "feedback"
+    t.text     "test_results"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "submissions_count",   default: 0, null: false
+  end
+
+  add_index "solutions", ["exercise_id"], name: "index_solutions_on_exercise_id", using: :btree
+  add_index "solutions", ["submitter_id"], name: "index_solutions_on_submitter_id", using: :btree
 
   create_table "submissions", force: true do |t|
     t.text     "content"
