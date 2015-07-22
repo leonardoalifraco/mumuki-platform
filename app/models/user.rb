@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   has_many :submitted_guides, -> { uniq.order(:position) }, through: :submitted_exercises, class_name: 'Guide', source: :guide
 
   has_many :solved_exercises,
-           -> { where('submissions.status' => Status::Passed.to_i) },
+           -> { where('solutions.status' => Status::Passed.to_i) },
            through: :solutions,
            class_name: 'Exercise',
            source: :exercise
